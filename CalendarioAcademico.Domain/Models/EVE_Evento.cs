@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CalendarioAcademico.Domain.Models
+﻿namespace CalendarioAcademico.Domain.Models
 {
-    internal class Evento
+    public class EVE_Evento
     {
     }
 }

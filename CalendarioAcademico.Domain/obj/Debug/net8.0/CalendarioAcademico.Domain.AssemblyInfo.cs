@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CalendarioAcademico.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b50b839fbdedd26c6b203256aa94c53cdce58ad6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+663733990bbbd9a8083ab8a650f2375c6ee2fffd")]
 [assembly: System.Reflection.AssemblyProductAttribute("CalendarioAcademico.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CalendarioAcademico.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
