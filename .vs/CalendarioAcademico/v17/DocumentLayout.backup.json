@@ -90,12 +90,12 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "CalendarioAcademico.Domain.csproj",
+              "Title": "CalendarioAcademico.Domain",
               "DocumentMoniker": "C:\\Users\\e_dvplima\\Documents\\Projeto\\CalendarioAcademico\\CalendarioAcademico.Domain\\CalendarioAcademico.Domain.csproj",
               "RelativeDocumentMoniker": "CalendarioAcademico.Domain\\CalendarioAcademico.Domain.csproj",
               "ToolTip": "C:\\Users\\e_dvplima\\Documents\\Projeto\\CalendarioAcademico\\CalendarioAcademico.Domain\\CalendarioAcademico.Domain.csproj",
               "RelativeToolTip": "CalendarioAcademico.Domain\\CalendarioAcademico.Domain.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2025-03-07T12:27:05.955Z",
               "EditorCaption": ""
