@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\e_dvplima\\Documents\\Projeto\\CalendarioAcademico\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E7E55DB6-338F-4546-A7DD-DF15A6873097}|CalendarioAcademico.Data\\CalendarioAcademico.Data.csproj|c:\\users\\e_dvplima\\documents\\projeto\\calendarioacademico\\calendarioacademico.data\\calendarioacademico.data.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{E7E55DB6-338F-4546-A7DD-DF15A6873097}|CalendarioAcademico.Data\\CalendarioAcademico.Data.csproj|solutionrelative:calendarioacademico.data\\calendarioacademico.data.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7E55DB6-338F-4546-A7DD-DF15A6873097}|CalendarioAcademico.Data\\CalendarioAcademico.Data.csproj|c:\\users\\e_dvplima\\documents\\projeto\\calendarioacademico\\calendarioacademico.data\\dbcontext\\calendarioacademicocontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7E55DB6-338F-4546-A7DD-DF15A6873097}|CalendarioAcademico.Data\\CalendarioAcademico.Data.csproj|solutionrelative:calendarioacademico.data\\dbcontext\\calendarioacademicocontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E3B57D1-82CB-4A81-996E-35A4C2D08637}|CalendarioAcademico.Domain\\CalendarioAcademico.Domain.csproj|c:\\users\\e_dvplima\\documents\\projeto\\calendarioacademico\\calendarioacademico.domain\\models\\evpt_evento_portaria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E3B57D1-82CB-4A81-996E-35A4C2D08637}|CalendarioAcademico.Domain\\CalendarioAcademico.Domain.csproj|solutionrelative:calendarioacademico.domain\\models\\evpt_evento_portaria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{9E3B57D1-82CB-4A81-996E-35A4C2D08637}|CalendarioAcademico.Domain\\CalendarioAcademico.Domain.csproj|c:\\users\\e_dvplima\\documents\\projeto\\calendarioacademico\\calendarioacademico.domain\\models\\cad_calendario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E3B57D1-82CB-4A81-996E-35A4C2D08637}|CalendarioAcademico.Domain\\CalendarioAcademico.Domain.csproj|solutionrelative:calendarioacademico.domain\\models\\cad_calendario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -26,8 +38,34 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CalendarioAcademicoContext.cs",
+              "DocumentMoniker": "C:\\Users\\e_dvplima\\Documents\\Projeto\\CalendarioAcademico\\CalendarioAcademico.Data\\DBContext\\CalendarioAcademicoContext.cs",
+              "RelativeDocumentMoniker": "CalendarioAcademico.Data\\DBContext\\CalendarioAcademicoContext.cs",
+              "ToolTip": "C:\\Users\\e_dvplima\\Documents\\Projeto\\CalendarioAcademico\\CalendarioAcademico.Data\\DBContext\\CalendarioAcademicoContext.cs",
+              "RelativeToolTip": "CalendarioAcademico.Data\\DBContext\\CalendarioAcademicoContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T13:16:51.696Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CalendarioAcademico.Data",
+              "DocumentMoniker": "C:\\Users\\e_dvplima\\Documents\\Projeto\\CalendarioAcademico\\CalendarioAcademico.Data\\CalendarioAcademico.Data.csproj",
+              "RelativeDocumentMoniker": "CalendarioAcademico.Data\\CalendarioAcademico.Data.csproj",
+              "ToolTip": "C:\\Users\\e_dvplima\\Documents\\Projeto\\CalendarioAcademico\\CalendarioAcademico.Data\\CalendarioAcademico.Data.csproj",
+              "RelativeToolTip": "CalendarioAcademico.Data\\CalendarioAcademico.Data.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-10T13:16:02.439Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -50,7 +88,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "EVPT_Evento_Portaria.cs",
+              "DocumentMoniker": "C:\\Users\\e_dvplima\\Documents\\Projeto\\CalendarioAcademico\\CalendarioAcademico.Domain\\Models\\EVPT_Evento_Portaria.cs",
+              "RelativeDocumentMoniker": "CalendarioAcademico.Domain\\Models\\EVPT_Evento_Portaria.cs",
+              "ToolTip": "C:\\Users\\e_dvplima\\Documents\\Projeto\\CalendarioAcademico\\CalendarioAcademico.Domain\\Models\\EVPT_Evento_Portaria.cs",
+              "RelativeToolTip": "CalendarioAcademico.Domain\\Models\\EVPT_Evento_Portaria.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T13:13:16.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "PORT_Portaria.cs",
               "DocumentMoniker": "C:\\Users\\e_dvplima\\Documents\\Projeto\\CalendarioAcademico\\CalendarioAcademico.Domain\\Models\\PORT_Portaria.cs",
               "RelativeDocumentMoniker": "CalendarioAcademico.Domain\\Models\\PORT_Portaria.cs",
@@ -63,7 +114,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "EVNT_Evento.cs",
               "DocumentMoniker": "C:\\Users\\e_dvplima\\Documents\\Projeto\\CalendarioAcademico\\CalendarioAcademico.Domain\\Models\\EVNT_Evento.cs",
               "RelativeDocumentMoniker": "CalendarioAcademico.Domain\\Models\\EVNT_Evento.cs",
@@ -76,7 +127,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "CAD_Calendario.cs",
               "DocumentMoniker": "C:\\Users\\e_dvplima\\Documents\\Projeto\\CalendarioAcademico\\CalendarioAcademico.Domain\\Models\\CAD_Calendario.cs",
               "RelativeDocumentMoniker": "CalendarioAcademico.Domain\\Models\\CAD_Calendario.cs",
@@ -89,7 +140,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "CalendarioAcademico.Domain.csproj",
               "DocumentMoniker": "C:\\Users\\e_dvplima\\Documents\\Projeto\\CalendarioAcademico\\CalendarioAcademico.Domain\\CalendarioAcademico.Domain.csproj",
               "RelativeDocumentMoniker": "CalendarioAcademico.Domain\\CalendarioAcademico.Domain.csproj",
@@ -97,7 +148,8 @@
               "RelativeToolTip": "CalendarioAcademico.Domain\\CalendarioAcademico.Domain.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-03-07T12:27:05.955Z"
+              "WhenOpened": "2025-03-07T12:27:05.955Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -22,4 +22,12 @@
     <PackageReference Include="System.Text.Json" Version="9.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Enum\" />
+    <Folder Include="DTO\" />
+    <Folder Include="Attributes\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Tools\" />
+  </ItemGroup>
+
 </Project>

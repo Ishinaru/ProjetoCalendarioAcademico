@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarioAcademico.Domain", "CalendarioAcademico.Domain\CalendarioAcademico.Domain.csproj", "{9E3B57D1-82CB-4A81-996E-35A4C2D08637}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarioAcademico.Data", "CalendarioAcademico.Data\CalendarioAcademico.Data.csproj", "{E7E55DB6-338F-4546-A7DD-DF15A6873097}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9E3B57D1-82CB-4A81-996E-35A4C2D08637}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E3B57D1-82CB-4A81-996E-35A4C2D08637}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E3B57D1-82CB-4A81-996E-35A4C2D08637}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7E55DB6-338F-4546-A7DD-DF15A6873097}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7E55DB6-338F-4546-A7DD-DF15A6873097}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7E55DB6-338F-4546-A7DD-DF15A6873097}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7E55DB6-338F-4546-A7DD-DF15A6873097}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
