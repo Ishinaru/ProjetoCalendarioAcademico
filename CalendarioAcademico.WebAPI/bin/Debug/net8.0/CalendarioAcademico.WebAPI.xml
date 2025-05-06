@@ -1,0 +1,220 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CalendarioAcademico.WebAPI</name>
+    </assembly>
+    <members>
+        <member name="M:CalendarioAcademico.WebAPI.Controllers.CalendarioController.Consultar_Calendarios">
+            <summary>
+            Consulta todos os calendários disponíveis.
+            </summary>
+            <returns>Uma lista de itens detalhados.</returns>
+            <response code="200">Calendários encontrados.</response>
+        </member>
+        <member name="M:CalendarioAcademico.WebAPI.Controllers.CalendarioController.Consultar_Calendarios_Aprovados">
+            <summary>
+            Consultar todos os calendários com status de aprovado disponíveis.
+            </summary>
+            <returns>Retorna 200 (Ok) caso os calendários sejam encontrados ou mensagens de erros caso contrário.</returns>
+            <response code = "200">Calendários aprovados encontrados.</response>
+            <response code = "404">Calendários aprovados não foram encontrados.</response>
+            <response code = "500">Erro interno ao buscar os calendários.</response>
+        </member>
+        <member name="M:CalendarioAcademico.WebAPI.Controllers.CalendarioController.Editar(System.Int32,CalendarioAcademico.Domain.DTO.Calendario.CalendarioDTO_Edit)">
+            <summary>
+            Edita um calendário existente, permitindo atualizar a observação ou desativá-lo.
+            </summary>
+            <param name="id">Identificador do calendário a ser editado.</param>
+            <param name="edit_dto">Objeto contendo os dados para a atualização do calendário.</param>
+            <returns>Retorna 204 (No Content) caso o calendário seja criado com sucesso ou mensagens de erro caso contrário.</returns>
+            <response code="204">Calendário criado com sucesso.</response>
+            <response code="400">Status do calendário não permite edição ou dados inválidos.</response>
+            <response code="404">Calendário não encontrado.</response>
+            <response code="500">Erro interno ao atualizar o calendário.</response>
+        </member>
+        <member name="M:CalendarioAcademico.WebAPI.Controllers.CalendarioController.Cadastrar(CalendarioAcademico.Domain.DTO.Calendario.CalendarioDTO_Cadastrar)">
+            <summary>
+            Cadastra um novo calendário.
+            </summary>
+            <param name="cad_calendario">Objeto contendo os dados para criação do calendário.</param>
+            <returns>O calendário criado e seu respectivo ID.</returns>
+            <response code="201">Calendário criado com sucesso.</response>
+            <response code="400">Dados de entrada inválidos.</response>
+            <response code="500">Erro interno ao cadastrar o calendário.</response>
+        </member>
+        <member name="M:CalendarioAcademico.WebAPI.Controllers.CalendarioController.Aprovar_Calendario(System.Int32)">
+            <summary>
+            Aprova um calendário.
+            </summary>
+            <param name="id">Id do calendário a ser aprovado.</param>
+            <returns>Retorna 204 (No Content) se concluída com sucesso ou mensagens de erro caso contrário.</returns>
+            <response code = "204">Calendário aprovado com sucesso.</response>
+            <response code = "400">Calendário já aprovado ou com status inválido para a aprovação.</response>
+            <response code = "404">Calendário não encontrado ou desativado.</response>
+            <response code = "500">Erro interno ao atualizar o calendário.</response>
+        </member>
+        <member name="M:CalendarioAcademico.WebAPI.Controllers.CalendarioController.Dias_Letivos_Por_Ano(System.Int32)">
+            <summary>
+            Retorna a quantidade de dias letivos em um ano específico.
+            </summary>
+            <param name="ano">Ano para o qual a contagem de dias letivos será realizada.</param>
+            <returns>Retorna a quantidade de dias letivos do ano ou mensagens de erro caso contrário.</returns>
+            <response code="200">Retorna a quantidade de dias letivos com sucesso.</response>
+            <response code="500">Erro interno ao processar a solicitação.</response>
+        </member>
+        <member name="M:CalendarioAcademico.WebAPI.Controllers.CalendarioController.Dias_Letivos_Por_Mes(System.Int32,System.Int32)">
+            <summary>
+            Retorna a quantidade de dias letivos em um mês específico de um ano.
+            </summary>
+            <param name="ano">Ano para o qual a contagem de dias letivos será realizada.</param>
+            <param name="mes">Mês para o qual a contagem de dias letivos será realizada (deve estar entre 1 e 12).</param>
+            <returns>Retorna a quantidade de dias letivos do mês ou mensagens de erro caso contrário.</returns>
+            <response code="200">Retorna a quantidade de dias letivos com sucesso.</response>
+            <response code="400">Parâmetro inválido (mês fora do intervalo 1-12).</response>
+            <response code="500">Erro interno ao processar a solicitação.</response>
+        </member>
+        <member name="M:CalendarioAcademico.WebAPI.Controllers.EventoController.Consultar">
+            <summary>
+            Consulta todos os eventos disponíveis.
+            </summary>
+            <returns code = "200">Eventos encontrados com sucesso.</returns>
+        </member>
+        <member name="M:CalendarioAcademico.WebAPI.Controllers.EventoController.Cadastrar(System.Int32,CalendarioAcademico.Domain.DTO.Evento.EventoDTO_Cadastrar)">
+            <summary>
+            Cadastra um novo evento associado a um calendário específico.
+            </summary>
+            <param name="idCalendario">Identificador do calendário ao qual o evento será associado.</param>
+            <param name="cad_evento">Objeto contendo os dados para criação do evento.</param>
+            <returns>Retorna 201 (Created) com o evento criado ou mensagens de erro caso contrário.</returns>
+            <response code="201">Evento criado com sucesso.</response>
+            <response code="400">Dados inválidos ou calendário não permite criação.</response>
+            <response code="404">Calendário não encontrado.</response>
+            <response code="500">Erro interno ao cadastrar o evento.</response>
+        </member>
+        <member name="M:CalendarioAcademico.WebAPI.Controllers.EventoController.Listar_Eventos_Por_Calendario(System.Int32)">
+            <summary>
+            Lista todos os eventos associados a um calendário específico.
+            </summary>
+            <param name="idCalendario">Identificador do calendário cujos eventos serão listados.</param>
+            <returns>Retorna 200 (Ok) com a lista de eventos ou mensagens de erro caso contrário.</returns>
+            <response code="200">Eventos encontrados para o calendário especificado.</response>
+            <response code="404">Calendário não encontrado ou nenhum evento associado.</response>
+            <response code="500">Erro interno ao buscar os eventos.</response>
+        </member>
+        <member name="M:CalendarioAcademico.WebAPI.Controllers.EventoController.Listar_Eventos_Por_AnoCalendario(System.Int32)">
+            <summary>
+            Lista todos os eventos associados a um calendário específico por ano.
+            </summary>
+            <param name="ano">Ano do calendário cujos eventos serão listados.</param>
+            <returns>Retorna 200 (Ok) com a lista de eventos ou mensagens de erro caso contrário.</returns>
+            <response code="200">Eventos encontrados para o calendário especificado.</response>
+            <response code="404">Calendário não encontrado ou nenhum evento associado.</response>
+            <response code="500">Erro interno ao buscar os eventos.</response>
+        </member>
+        <member name="M:CalendarioAcademico.WebAPI.Controllers.EventoController.Listar_Eventos_Por_MesCalendario(System.Int32,System.Int32)">
+            <summary>
+            Lista todos os eventos de um mês e ano específicos.
+            </summary>
+            <param name="mes">Mês do calendário (1 a 12)</param>
+            <param name="ano">Ano do calendário cujos eventos serão listados.</param>
+            <returns>Retorna 200 (Ok) com a lista de eventos ou mensagens de erro caso contrário.</returns>
+            <response code="200">Eventos encontrados para o mês/ano especificado.</response>
+            <response code = "400">Mês inválido.</response>
+            <response code="404">Calendário não encontrado ou nenhum evento associado.</response>
+            <response code="500">Erro interno ao buscar os eventos.</response>
+        </member>
+        <member name="M:CalendarioAcademico.WebAPI.Controllers.EventoController.Listar_Eventos_Por_Periodo(System.DateOnly,System.DateOnly)">
+            <summary>
+            Lista todos os eventos dentro de um período específico.
+            </summary>
+            <param name="dataInicio">Data de início do período (formato: dd/MM/yyyy).</param>
+            <param name="dataFim">Data de fim do período (formato: dd/MM/yyyy).</param>
+            <returns>Eventos do período ou mensagem de erro.</returns>
+        </member>
+        <member name="M:CalendarioAcademico.WebAPI.Controllers.EventoController.ObterDatasEvento(System.Int32)">
+            <summary>
+            Obtém as datas efetivas de um evento, considerando alterações por portarias ativas.
+            </summary>
+            <remarks>
+            Retorna as datas de início e fim de um evento, priorizando as datas definidas pela portaria ativa mais recente, se houver, ou as datas originais do evento. A origem das datas é indicada no campo "origem".
+            Exemplo de resposta (com portaria ativa):
+            ```json
+            {
+              "idEvento": 6,
+              "descricao": "Descrição do Evento 6",
+              "dataInicio": "2025-04-16",
+              "dataFinal": "2025-04-24",
+              "origem": "Portaria 001/2025"
+            }
+            ```
+            Exemplo de resposta (sem portaria ativa):
+            ```json
+            {
+              "idEvento": 6,
+              "descricao": "Descrição do Evento 6",
+              "dataInicio": "2025-01-01",
+              "dataFinal": "2025-01-02",
+              "origem": "Evento Original"
+            }
+            ```
+            </remarks>
+            <param name="id">ID do evento a ser consultado.</param>
+            <returns>Dados do evento com datas efetivas e origem.</returns>
+            <response code="200">Datas do evento retornadas com sucesso.</response>
+            <response code="404">Evento não encontrado.</response>
+            <response code="500">Erro interno ao consultar as datas do evento.</response>
+        </member>
+        <member name="M:CalendarioAcademico.WebAPI.Controllers.EventoController.Paginacao(CalendarioAcademico.Domain.DTO.Evento.Params_Paginacao_EventoDTO)">
+            <summary>
+            Lista eventos acadêmicos com suporte a paginação, filtros, ordenação e inclusão de dados relacionados.
+            </summary>
+            <remarks>
+            Retorna uma lista paginada de eventos com metadados de paginação (total de registros, total de páginas, etc.).
+            
+            **Parâmetros:**
+            - `TamanhoPagina`: Quantidade de itens por página (máximo 50, padrão 10).
+            - `NumeroPagina`: Número da página desejada (padrão 1).
+            - `CalendarioId`: ID do calendário para filtrar eventos (ex.: 1).
+            - `TipoFeriado`: Tipo de feriado para filtrar eventos (ex.: 0 = Não feriado, 1 = Municipal, 2 = Estadual, 3 = Nacional).
+            - `OrdenarPor`: Campo para ordenação (dataInicio, dataFinal, descricao).
+            - `Ordem`: Direção da ordenação (asc, desc).
+            - `IncluirRelacionamentos`: Dados relacionados a incluir (ex.: calendario).
+            </remarks>
+            <param name="parametros">Parâmetros de filtro, ordenação e inclusão.</param>
+            <returns>Lista paginada de eventos com metadados.</returns>
+            <response code="200">Eventos retornados com sucesso.</response>
+            <response code="400">Parâmetros inválidos (ex.: tamanhoPagina inválido, ordenarPor não suportado).</response>
+            <response code="500">Erro interno ao consultar eventos.</response>
+        </member>
+        <member name="M:CalendarioAcademico.WebAPI.Controllers.PortariaController.Consultar">
+            <summary>
+            Consulta todas as portarias disponíveis.
+            </summary>
+            <returns>Uma lista de portarias detalhadas.</returns>
+            <response code="200">Portarias encontradas.</response>
+        </member>
+        <member name="M:CalendarioAcademico.WebAPI.Controllers.PortariaController.Cadastrar(CalendarioAcademico.Domain.DTO.Portaria.PortariaDTO_Cadastrar)">
+            <summary>
+            Cadastra uma nova portaria associada a um calendário, modificando datas de eventos.
+            </summary>
+            <param name="cad_portaria">Objeto contendo os dados da portaria e os eventos a serem modificados.</param>
+            <returns>Retorna 201 (Created) com a portaria criada ou mensagens de erro caso contrário.</returns>
+            <response code="201">Portaria criada com sucesso.</response>
+            <response code="400">Dados inválidos ou calendário não permite modificação.</response>
+            <response code="404">Calendário ou eventos não encontrados.</response>
+            <response code="500">Erro interno ao cadastrar a portaria.</response>
+        </member>
+        <member name="M:CalendarioAcademico.WebAPI.Controllers.PortariaController.Editar(System.Int32,CalendarioAcademico.Domain.DTO.Portaria.PortariaDTO_Edit)">
+            <summary>
+            Edita uma portaria existente e os eventos associados.
+            </summary>
+            <param name="id">ID da portaria a ser editada.</param>
+            <param name="edit_portaria">Objeto contendo os dados atualizados da portaria e eventos.</param>
+            <returns>Retorna 200 (OK) com a portaria atualizada ou mensagens de erro.</returns>
+            <response code="200">Portaria editada com sucesso.</response>
+            <response code="400">Dados inválidos ou calendário não permite edição.</response>
+            <response code="404">Portaria ou eventos não encontrados.</response>
+            <response code="500">Erro interno ao editar a portaria.</response>
+        </member>
+    </members>
+</doc>

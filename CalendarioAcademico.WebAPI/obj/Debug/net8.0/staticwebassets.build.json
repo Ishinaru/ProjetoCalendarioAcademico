@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "Wi9vHQif01nk9IKKTZl6UViraU4vwaqjwRThqyRa254=",
+  "Source": "CalendarioAcademico.WebAPI",
+  "BasePath": "_content/CalendarioAcademico.WebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

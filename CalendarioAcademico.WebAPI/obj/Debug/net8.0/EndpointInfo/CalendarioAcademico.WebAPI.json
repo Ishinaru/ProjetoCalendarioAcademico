@@ -1,0 +1,2048 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "Documentação Calendário Acadêmico",
+    "description": "Documentação da API responsável pelo gerenciamento do calendário acadêmico da UESC.",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Calendario": {
+      "get": {
+        "tags": [
+          "Calendario"
+        ],
+        "summary": "Consulta todos os calendários disponíveis.",
+        "responses": {
+          "200": {
+            "description": "Calendários encontrados.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CAD_Calendario"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CAD_Calendario"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CAD_Calendario"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Calendario"
+        ],
+        "summary": "Cadastra um novo calendário.",
+        "requestBody": {
+          "description": "Objeto contendo os dados para criação do calendário.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CalendarioDTO_Cadastrar"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CalendarioDTO_Cadastrar"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CalendarioDTO_Cadastrar"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Calendário criado com sucesso.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CAD_Calendario"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CAD_Calendario"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CAD_Calendario"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Dados de entrada inválidos.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno ao cadastrar o calendário."
+          }
+        }
+      }
+    },
+    "/api/Calendario/calendarios_aprovados": {
+      "get": {
+        "tags": [
+          "Calendario"
+        ],
+        "summary": "Consultar todos os calendários com status de aprovado disponíveis.",
+        "responses": {
+          "200": {
+            "description": "Calendários aprovados encontrados.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CAD_Calendario"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CAD_Calendario"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CAD_Calendario"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Calendários aprovados não foram encontrados."
+          },
+          "500": {
+            "description": "Erro interno ao buscar os calendários."
+          }
+        }
+      }
+    },
+    "/api/Calendario/editar/{id}": {
+      "put": {
+        "tags": [
+          "Calendario"
+        ],
+        "summary": "Edita um calendário existente, permitindo atualizar a observação ou desativá-lo.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Identificador do calendário a ser editado.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Objeto contendo os dados para a atualização do calendário.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CalendarioDTO_Edit"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CalendarioDTO_Edit"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CalendarioDTO_Edit"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CAD_Calendario"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CAD_Calendario"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CAD_Calendario"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Calendário criado com sucesso."
+          },
+          "400": {
+            "description": "Status do calendário não permite edição ou dados inválidos."
+          },
+          "404": {
+            "description": "Calendário não encontrado."
+          },
+          "500": {
+            "description": "Erro interno ao atualizar o calendário."
+          }
+        }
+      }
+    },
+    "/api/Calendario/aprovar/{id}": {
+      "patch": {
+        "tags": [
+          "Calendario"
+        ],
+        "summary": "Aprova um calendário.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do calendário a ser aprovado.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Calendário aprovado com sucesso."
+          },
+          "404": {
+            "description": "Calendário não encontrado ou desativado.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Calendário já aprovado ou com status inválido para a aprovação.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno ao atualizar o calendário."
+          }
+        }
+      }
+    },
+    "/api/Calendario/dias_letivos/ano/{ano}": {
+      "get": {
+        "tags": [
+          "Calendario"
+        ],
+        "summary": "Retorna a quantidade de dias letivos em um ano específico.",
+        "parameters": [
+          {
+            "name": "ano",
+            "in": "path",
+            "description": "Ano para o qual a contagem de dias letivos será realizada.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retorna a quantidade de dias letivos com sucesso."
+          },
+          "500": {
+            "description": "Erro interno ao processar a solicitação."
+          }
+        }
+      }
+    },
+    "/api/Calendario/dias_letivos/ano/{ano}/mes/{mes}": {
+      "get": {
+        "tags": [
+          "Calendario"
+        ],
+        "summary": "Retorna a quantidade de dias letivos em um mês específico de um ano.",
+        "parameters": [
+          {
+            "name": "ano",
+            "in": "path",
+            "description": "Ano para o qual a contagem de dias letivos será realizada.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "mes",
+            "in": "path",
+            "description": "Mês para o qual a contagem de dias letivos será realizada (deve estar entre 1 e 12).",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retorna a quantidade de dias letivos com sucesso."
+          },
+          "400": {
+            "description": "Parâmetro inválido (mês fora do intervalo 1-12).",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno ao processar a solicitação."
+          }
+        }
+      }
+    },
+    "/api/Evento": {
+      "get": {
+        "tags": [
+          "Evento"
+        ],
+        "summary": "Consulta todos os eventos disponíveis.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventoDTO_Details"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventoDTO_Details"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventoDTO_Details"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Evento/calendario/{idCalendario}/eventos": {
+      "post": {
+        "tags": [
+          "Evento"
+        ],
+        "summary": "Cadastra um novo evento associado a um calendário específico.",
+        "parameters": [
+          {
+            "name": "idCalendario",
+            "in": "path",
+            "description": "Identificador do calendário ao qual o evento será associado.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Objeto contendo os dados para criação do evento.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventoDTO_Cadastrar"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventoDTO_Cadastrar"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventoDTO_Cadastrar"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Evento criado com sucesso.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventoDTO_Details"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventoDTO_Details"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventoDTO_Details"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Dados inválidos ou calendário não permite criação.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Calendário não encontrado.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno ao cadastrar o evento."
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Evento"
+        ],
+        "summary": "Lista todos os eventos associados a um calendário específico.",
+        "parameters": [
+          {
+            "name": "idCalendario",
+            "in": "path",
+            "description": "Identificador do calendário cujos eventos serão listados.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Eventos encontrados para o calendário especificado.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventoDTO_Details"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventoDTO_Details"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventoDTO_Details"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Calendário não encontrado ou nenhum evento associado.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno ao buscar os eventos."
+          }
+        }
+      }
+    },
+    "/api/Evento/editar/{id}": {
+      "put": {
+        "tags": [
+          "Evento"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventoDTO_Edit"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventoDTO_Edit"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventoDTO_Edit"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/Evento/calendario/{ano}/eventos_por_ano": {
+      "get": {
+        "tags": [
+          "Evento"
+        ],
+        "summary": "Lista todos os eventos associados a um calendário específico por ano.",
+        "parameters": [
+          {
+            "name": "ano",
+            "in": "path",
+            "description": "Ano do calendário cujos eventos serão listados.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Eventos encontrados para o calendário especificado.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventoDTO_Details"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventoDTO_Details"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventoDTO_Details"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Calendário não encontrado ou nenhum evento associado.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno ao buscar os eventos."
+          }
+        }
+      }
+    },
+    "/api/Evento/calendario/{ano}/{mes}/eventos_por_mes": {
+      "get": {
+        "tags": [
+          "Evento"
+        ],
+        "summary": "Lista todos os eventos de um mês e ano específicos.",
+        "parameters": [
+          {
+            "name": "ano",
+            "in": "path",
+            "description": "Ano do calendário cujos eventos serão listados.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "mes",
+            "in": "path",
+            "description": "Mês do calendário (1 a 12)",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Eventos encontrados para o mês/ano especificado.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventoDTO_Details"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventoDTO_Details"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventoDTO_Details"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Calendário não encontrado ou nenhum evento associado.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno ao buscar os eventos."
+          },
+          "400": {
+            "description": "Mês inválido."
+          }
+        }
+      }
+    },
+    "/api/Evento/eventos_por_periodo": {
+      "get": {
+        "tags": [
+          "Evento"
+        ],
+        "summary": "Lista todos os eventos dentro de um período específico.",
+        "parameters": [
+          {
+            "name": "dataInicio",
+            "in": "query",
+            "description": "Data de início do período (formato: dd/MM/yyyy).",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "dataFim",
+            "in": "query",
+            "description": "Data de fim do período (formato: dd/MM/yyyy).",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventoDTO_Details"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventoDTO_Details"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventoDTO_Details"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/Evento/{id}/datas": {
+      "get": {
+        "tags": [
+          "Evento"
+        ],
+        "summary": "Obtém as datas efetivas de um evento, considerando alterações por portarias ativas.",
+        "description": "Retorna as datas de início e fim de um evento, priorizando as datas definidas pela portaria ativa mais recente, se houver, ou as datas originais do evento. A origem das datas é indicada no campo \"origem\".\r\nExemplo de resposta (com portaria ativa):\r\n```json\r\n{\r\n  \"idEvento\": 6,\r\n  \"descricao\": \"Descrição do Evento 6\",\r\n  \"dataInicio\": \"2025-04-16\",\r\n  \"dataFinal\": \"2025-04-24\",\r\n  \"origem\": \"Portaria 001/2025\"\r\n}\r\n```\r\nExemplo de resposta (sem portaria ativa):\r\n```json\r\n{\r\n  \"idEvento\": 6,\r\n  \"descricao\": \"Descrição do Evento 6\",\r\n  \"dataInicio\": \"2025-01-01\",\r\n  \"dataFinal\": \"2025-01-02\",\r\n  \"origem\": \"Evento Original\"\r\n}\r\n```",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do evento a ser consultado.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Datas do evento retornadas com sucesso.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventoDTO_View"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventoDTO_View"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventoDTO_View"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Evento não encontrado.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno ao consultar as datas do evento.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Evento/paginacao": {
+      "get": {
+        "tags": [
+          "Evento"
+        ],
+        "summary": "Lista eventos acadêmicos com suporte a paginação, filtros, ordenação e inclusão de dados relacionados.",
+        "description": "Retorna uma lista paginada de eventos com metadados de paginação (total de registros, total de páginas, etc.).\r\n\r\n**Parâmetros:**\r\n- `TamanhoPagina`: Quantidade de itens por página (máximo 50, padrão 10).\r\n- `NumeroPagina`: Número da página desejada (padrão 1).\r\n- `CalendarioId`: ID do calendário para filtrar eventos (ex.: 1).\r\n- `TipoFeriado`: Tipo de feriado para filtrar eventos (ex.: 0 = Não feriado, 1 = Municipal, 2 = Estadual, 3 = Nacional).\r\n- `OrdenarPor`: Campo para ordenação (dataInicio, dataFinal, descricao).\r\n- `Ordem`: Direção da ordenação (asc, desc).\r\n- `IncluirRelacionamentos`: Dados relacionados a incluir (ex.: calendario).",
+        "parameters": [
+          {
+            "name": "TamanhoPagina",
+            "in": "query",
+            "schema": {
+              "maximum": 50,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "CalendarioId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "TipoFeriado",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "OrdenarPor",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Ordem",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "IncluirRelacionamentos",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Eventos retornados com sucesso.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventoDTO_Paginacao_ViewPaginacaoDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventoDTO_Paginacao_ViewPaginacaoDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventoDTO_Paginacao_ViewPaginacaoDTO"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parâmetros inválidos (ex.: tamanhoPagina inválido, ordenarPor não suportado).",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno ao consultar eventos.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Evento/dropdown_list_tipo_feriado": {
+      "get": {
+        "tags": [
+          "Evento"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Evento/dropdown/meses": {
+      "get": {
+        "tags": [
+          "Evento"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Portaria": {
+      "get": {
+        "tags": [
+          "Portaria"
+        ],
+        "summary": "Consulta todas as portarias disponíveis.",
+        "responses": {
+          "200": {
+            "description": "Portarias encontradas.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PortariaDTO_Details"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PortariaDTO_Details"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PortariaDTO_Details"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Portaria"
+        ],
+        "summary": "Cadastra uma nova portaria associada a um calendário, modificando datas de eventos.",
+        "requestBody": {
+          "description": "Objeto contendo os dados da portaria e os eventos a serem modificados.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PortariaDTO_Cadastrar"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PortariaDTO_Cadastrar"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PortariaDTO_Cadastrar"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Portaria criada com sucesso.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PortariaDTO_Details"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PortariaDTO_Details"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PortariaDTO_Details"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Dados inválidos ou calendário não permite modificação.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Calendário ou eventos não encontrados.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno ao cadastrar a portaria."
+          }
+        }
+      }
+    },
+    "/api/Portaria/{id}": {
+      "put": {
+        "tags": [
+          "Portaria"
+        ],
+        "summary": "Edita uma portaria existente e os eventos associados.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da portaria a ser editada.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Objeto contendo os dados atualizados da portaria e eventos.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PortariaDTO_Edit"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PortariaDTO_Edit"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PortariaDTO_Edit"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Portaria editada com sucesso.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PortariaDTO_Details"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PortariaDTO_Details"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PortariaDTO_Details"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Dados inválidos ou calendário não permite edição.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Portaria ou eventos não encontrados.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno ao editar a portaria."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CAD_Calendario": {
+        "type": "object",
+        "properties": {
+          "caD_CD_Calendario": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "caD_Ano": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "caD_Status": {
+            "$ref": "#/components/schemas/StatusCalendario"
+          },
+          "caD_DS_Observacao": {
+            "type": "string",
+            "nullable": true
+          },
+          "caD_NumeroResolucao": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "caD_DT_DataAtualizacao": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "caD_CD_Usuario": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "caD_CD_Evento": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "evnT_Evento": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EVNT_Evento"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CalendarioDTO_Cadastrar": {
+        "required": [
+          "ano"
+        ],
+        "type": "object",
+        "properties": {
+          "ano": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "observacao": {
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CalendarioDTO_Edit": {
+        "type": "object",
+        "properties": {
+          "observacao": {
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "desativar": {
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CalendarioDTO_View_Evento": {
+        "type": "object",
+        "properties": {
+          "idCalendario": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ano": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "observacao": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "numResolucao": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EVNT_Evento": {
+        "type": "object",
+        "properties": {
+          "evnT_CD_Evento": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "evnT_DT_DataInicio": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "evnT_DT_DataFinal": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "evnT_DS_Descricao": {
+            "type": "string",
+            "nullable": true
+          },
+          "evnT_UescFunciona": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "evnT_Importante": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "evnT_Ativo": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "evnT_TipoFeriado": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "evnT_DT_DataAtualizacao": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "evnT_CD_Usuario": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "evnT_CD_Calendario": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "evnT_CD_CalendarioNavigation": {
+            "$ref": "#/components/schemas/CAD_Calendario"
+          },
+          "evpT_Evento_Portaria": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EVPT_Evento_Portaria"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EVPT_Evento_Portaria": {
+        "type": "object",
+        "properties": {
+          "evpT_CD_Evento": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "evpT_CD_Portaria": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "evpT_DT_DataInicio": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "evpT_DT_DataFinal": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "evpT_Observacao": {
+            "type": "string",
+            "nullable": true
+          },
+          "evpT_Ativo": {
+            "type": "boolean"
+          },
+          "evpT_CD_EventoNavigation": {
+            "$ref": "#/components/schemas/EVNT_Evento"
+          },
+          "evpT_CD_PortariaNavigation": {
+            "$ref": "#/components/schemas/PORT_Portaria"
+          }
+        },
+        "additionalProperties": false
+      },
+      "EventoDTO_Cadastrar": {
+        "type": "object",
+        "properties": {
+          "dataInicio": {
+            "type": "string",
+            "format": "date"
+          },
+          "dataFinal": {
+            "type": "string",
+            "format": "date"
+          },
+          "descricao": {
+            "type": "string",
+            "nullable": true
+          },
+          "uescFunciona": {
+            "type": "boolean"
+          },
+          "importante": {
+            "type": "boolean"
+          },
+          "tipoFeriado": {
+            "$ref": "#/components/schemas/TipoFeriado"
+          }
+        },
+        "additionalProperties": false
+      },
+      "EventoDTO_Details": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data_inicio": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "data_final": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "descricao": {
+            "type": "string",
+            "nullable": true
+          },
+          "uesc_funciona": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "eh_importante": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "ativo": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "tipo_de_feriado": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "data_atualizacao": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "id_calendario": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EventoDTO_Edit": {
+        "type": "object",
+        "properties": {
+          "dataInicio": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "dataFinal": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "descricao": {
+            "type": "string",
+            "nullable": true
+          },
+          "uescFunciona": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "importante": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "desativar": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "tipoFeriado": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "dataAtualizacao": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EventoDTO_Paginacao_View": {
+        "type": "object",
+        "properties": {
+          "idEvento": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "descricao": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataInicio": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "dataFinal": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "ativo": {
+            "type": "boolean"
+          },
+          "calendario": {
+            "$ref": "#/components/schemas/CalendarioDTO_View_Evento"
+          }
+        },
+        "additionalProperties": false
+      },
+      "EventoDTO_Paginacao_ViewPaginacaoDTO": {
+        "type": "object",
+        "properties": {
+          "itens": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EventoDTO_Paginacao_View"
+            },
+            "nullable": true
+          },
+          "totalRegistros": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPaginas": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "paginaAtual": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tamanhoPagina": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "EventoDTO_View": {
+        "type": "object",
+        "properties": {
+          "idEvento": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "descricao": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataInicio": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "dataFinal": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "origem": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EventoPortariaDTO": {
+        "type": "object",
+        "properties": {
+          "id_evento": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "nova_data_inicio": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "nova_data_final": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PORT_Portaria": {
+        "type": "object",
+        "properties": {
+          "porT_CD_Portaria": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "porT_NumPortaria": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "porT_Ano": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "porT_Ativo": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "porT_Observacao": {
+            "type": "string",
+            "nullable": true
+          },
+          "porT_DT_DataAtualizacao": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "porT_CD_Usuario": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "evpT_Evento_Portaria": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EVPT_Evento_Portaria"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PortariaDTO_Cadastrar": {
+        "type": "object",
+        "properties": {
+          "num_portaria": {
+            "type": "string",
+            "nullable": true
+          },
+          "observacao": {
+            "type": "string",
+            "nullable": true
+          },
+          "id_calendario": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "eventos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EventoPortariaDTO"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PortariaDTO_Details": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "num_portaria": {
+            "type": "string",
+            "nullable": true
+          },
+          "ano": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "is_ativo": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "observacao": {
+            "type": "string",
+            "nullable": true
+          },
+          "data_atualizacao": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "id_usuario": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "eventos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EventoPortariaDTO"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PortariaDTO_Edit": {
+        "type": "object",
+        "properties": {
+          "num_portaria": {
+            "type": "string",
+            "nullable": true
+          },
+          "desativar": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "observacao": {
+            "type": "string",
+            "nullable": true
+          },
+          "data_atualizacao": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "eventos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EventoPortariaDTO"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": { }
+      },
+      "StatusCalendario": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "TipoFeriado": {
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
+      }
+    }
+  }
+}

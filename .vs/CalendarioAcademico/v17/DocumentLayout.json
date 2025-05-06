@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\e_dvplima\\Documents\\Projeto\\CalendarioAcademico\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9E3B57D1-82CB-4A81-996E-35A4C2D08637}|CalendarioAcademico.Domain\\CalendarioAcademico.Domain.csproj|c:\\users\\e_dvplima\\documents\\projeto\\calendarioacademico\\calendarioacademico.domain\\enum\\statuscalendario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E3B57D1-82CB-4A81-996E-35A4C2D08637}|CalendarioAcademico.Domain\\CalendarioAcademico.Domain.csproj|solutionrelative:calendarioacademico.domain\\enum\\statuscalendario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9E3B57D1-82CB-4A81-996E-35A4C2D08637}|CalendarioAcademico.Domain\\CalendarioAcademico.Domain.csproj|c:\\users\\e_dvplima\\documents\\projeto\\calendarioacademico\\calendarioacademico.domain\\enum\\tipoferiado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E3B57D1-82CB-4A81-996E-35A4C2D08637}|CalendarioAcademico.Domain\\CalendarioAcademico.Domain.csproj|solutionrelative:calendarioacademico.domain\\enum\\tipoferiado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9E3B57D1-82CB-4A81-996E-35A4C2D08637}|CalendarioAcademico.Domain\\CalendarioAcademico.Domain.csproj|c:\\users\\e_dvplima\\documents\\projeto\\calendarioacademico\\calendarioacademico.domain\\calendarioacademico.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{9E3B57D1-82CB-4A81-996E-35A4C2D08637}|CalendarioAcademico.Domain\\CalendarioAcademico.Domain.csproj|solutionrelative:calendarioacademico.domain\\calendarioacademico.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{905A4C9E-C927-4DDF-9EEF-66714E11732D}|CalendarioAcademico.WebAPI\\CalendarioAcademico.WebAPI.csproj|c:\\users\\e_dvplima\\documents\\projeto\\calendarioacademico\\calendarioacademico.webapi\\services\\dropdown\\dropdownservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{905A4C9E-C927-4DDF-9EEF-66714E11732D}|CalendarioAcademico.WebAPI\\CalendarioAcademico.WebAPI.csproj|solutionrelative:calendarioacademico.webapi\\services\\dropdown\\dropdownservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,60 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "StatusCalendario.cs",
-              "DocumentMoniker": "C:\\Users\\e_dvplima\\Documents\\Projeto\\CalendarioAcademico\\CalendarioAcademico.Domain\\Enum\\StatusCalendario.cs",
-              "RelativeDocumentMoniker": "CalendarioAcademico.Domain\\Enum\\StatusCalendario.cs",
-              "ToolTip": "C:\\Users\\e_dvplima\\Documents\\Projeto\\CalendarioAcademico\\CalendarioAcademico.Domain\\Enum\\StatusCalendario.cs",
-              "RelativeToolTip": "CalendarioAcademico.Domain\\Enum\\StatusCalendario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Title": "DropdownService.cs",
+              "DocumentMoniker": "C:\\Users\\e_dvplima\\Documents\\Projeto\\CalendarioAcademico\\CalendarioAcademico.WebAPI\\Services\\Dropdown\\DropdownService.cs",
+              "RelativeDocumentMoniker": "CalendarioAcademico.WebAPI\\Services\\Dropdown\\DropdownService.cs",
+              "ToolTip": "C:\\Users\\e_dvplima\\Documents\\Projeto\\CalendarioAcademico\\CalendarioAcademico.WebAPI\\Services\\Dropdown\\DropdownService.cs",
+              "RelativeToolTip": "CalendarioAcademico.WebAPI\\Services\\Dropdown\\DropdownService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T14:09:41.361Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CalendarioAcademico.Domain",
-              "DocumentMoniker": "C:\\Users\\e_dvplima\\Documents\\Projeto\\CalendarioAcademico\\CalendarioAcademico.Domain\\CalendarioAcademico.Domain.csproj",
-              "RelativeDocumentMoniker": "CalendarioAcademico.Domain\\CalendarioAcademico.Domain.csproj",
-              "ToolTip": "C:\\Users\\e_dvplima\\Documents\\Projeto\\CalendarioAcademico\\CalendarioAcademico.Domain\\CalendarioAcademico.Domain.csproj",
-              "RelativeToolTip": "CalendarioAcademico.Domain\\CalendarioAcademico.Domain.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-03-10T13:38:40.881Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TipoFeriado.cs",
-              "DocumentMoniker": "C:\\Users\\e_dvplima\\Documents\\Projeto\\CalendarioAcademico\\CalendarioAcademico.Domain\\Enum\\TipoFeriado.cs",
-              "RelativeDocumentMoniker": "CalendarioAcademico.Domain\\Enum\\TipoFeriado.cs",
-              "ToolTip": "C:\\Users\\e_dvplima\\Documents\\Projeto\\CalendarioAcademico\\CalendarioAcademico.Domain\\Enum\\TipoFeriado.cs",
-              "RelativeToolTip": "CalendarioAcademico.Domain\\Enum\\TipoFeriado.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T13:39:47.233Z",
+              "WhenOpened": "2025-05-06T14:28:34.554Z",
               "EditorCaption": ""
             }
           ]

@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarioAcademico.Domain"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarioAcademico.Data", "CalendarioAcademico.Data\CalendarioAcademico.Data.csproj", "{E7E55DB6-338F-4546-A7DD-DF15A6873097}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarioAcademico.WebAPI", "CalendarioAcademico.WebAPI\CalendarioAcademico.WebAPI.csproj", "{905A4C9E-C927-4DDF-9EEF-66714E11732D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E7E55DB6-338F-4546-A7DD-DF15A6873097} = {E7E55DB6-338F-4546-A7DD-DF15A6873097}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +26,10 @@ Global
 		{E7E55DB6-338F-4546-A7DD-DF15A6873097}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7E55DB6-338F-4546-A7DD-DF15A6873097}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7E55DB6-338F-4546-A7DD-DF15A6873097}.Release|Any CPU.Build.0 = Release|Any CPU
+		{905A4C9E-C927-4DDF-9EEF-66714E11732D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{905A4C9E-C927-4DDF-9EEF-66714E11732D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{905A4C9E-C927-4DDF-9EEF-66714E11732D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{905A4C9E-C927-4DDF-9EEF-66714E11732D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

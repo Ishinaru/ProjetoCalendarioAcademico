@@ -1,0 +1,16 @@
+C:\Users\e_dvplima\Documents\Projeto\CalendarioAcademico\CalendarioAcademico.Domain\bin\Debug\net8.0\CalendarioAcademico.Domain.deps.json
+C:\Users\e_dvplima\Documents\Projeto\CalendarioAcademico\CalendarioAcademico.Domain\bin\Debug\net8.0\CalendarioAcademico.Domain.runtimeconfig.json
+C:\Users\e_dvplima\Documents\Projeto\CalendarioAcademico\CalendarioAcademico.Domain\bin\Debug\net8.0\CalendarioAcademico.Domain.dll
+C:\Users\e_dvplima\Documents\Projeto\CalendarioAcademico\CalendarioAcademico.Domain\bin\Debug\net8.0\CalendarioAcademico.Domain.pdb
+C:\Users\e_dvplima\Documents\Projeto\CalendarioAcademico\CalendarioAcademico.Domain\obj\Debug\net8.0\CalendarioAcademico.Domain.csproj.AssemblyReference.cache
+C:\Users\e_dvplima\Documents\Projeto\CalendarioAcademico\CalendarioAcademico.Domain\obj\Debug\net8.0\CalendarioAcademico.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\e_dvplima\Documents\Projeto\CalendarioAcademico\CalendarioAcademico.Domain\obj\Debug\net8.0\CalendarioAcademico.Domain.AssemblyInfoInputs.cache
+C:\Users\e_dvplima\Documents\Projeto\CalendarioAcademico\CalendarioAcademico.Domain\obj\Debug\net8.0\CalendarioAcademico.Domain.AssemblyInfo.cs
+C:\Users\e_dvplima\Documents\Projeto\CalendarioAcademico\CalendarioAcademico.Domain\obj\Debug\net8.0\CalendarioAcademico.Domain.csproj.CoreCompileInputs.cache
+C:\Users\e_dvplima\Documents\Projeto\CalendarioAcademico\CalendarioAcademico.Domain\obj\Debug\net8.0\EFCoreSqlServerDateOnlyTimeOnly.cs
+C:\Users\e_dvplima\Documents\Projeto\CalendarioAcademico\CalendarioAcademico.Domain\obj\Debug\net8.0\CalendarioAcademico.Domain.sourcelink.json
+C:\Users\e_dvplima\Documents\Projeto\CalendarioAcademico\CalendarioAcademico.Domain\obj\Debug\net8.0\CalendarioAcademico.Domain.dll
+C:\Users\e_dvplima\Documents\Projeto\CalendarioAcademico\CalendarioAcademico.Domain\obj\Debug\net8.0\refint\CalendarioAcademico.Domain.dll
+C:\Users\e_dvplima\Documents\Projeto\CalendarioAcademico\CalendarioAcademico.Domain\obj\Debug\net8.0\CalendarioAcademico.Domain.pdb
+C:\Users\e_dvplima\Documents\Projeto\CalendarioAcademico\CalendarioAcademico.Domain\obj\Debug\net8.0\CalendarioAcademico.Domain.genruntimeconfig.cache
+C:\Users\e_dvplima\Documents\Projeto\CalendarioAcademico\CalendarioAcademico.Domain\obj\Debug\net8.0\ref\CalendarioAcademico.Domain.dll
