@@ -1,64 +1,86 @@
-# Projeto Calendario Acadêmico
-Continuação do Projeto do Calendário Acadêmico utilizando as normas padrões da instituição
+# 📅 Calendário Acadêmico API
 
-# Visão Geral
+API RESTful desenvolvida para automatizar e gerenciar o calendário acadêmico da Universidade, com suporte completo a cadastros, consultas, atualizações e desativações de calendários, eventos e portarias.
 
-O arquivo `CAD_Calendario.cs` define a classe `CAD_Calendario`, que representa o modelo de um calendário acadêmico no domínio do sistema. Ele utiliza o **Entity Framework Core** para mapeamento de banco de dados e inclui propriedades e relacionamentos que refletem a estrutura e os requisitos do sistema.
+## 🚀 Tecnologias Utilizadas
 
-## Estrutura da Classe
+- [.NET 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+- C# 12
+- Entity Framework Core 8
+- ASP.NET Core Web API
+- Mapster (mapeamento de DTOs)
+- LinqKit (consultas dinâmicas)
+- Azure.Identity (autenticação)
+- Swagger / Swashbuckle (documentação interativa)
+- Microsoft.Data.SqlClient (conexão com SQL Server)
 
-### Atributos Principais
+## 🧩 Estrutura da Solução
 
-A classe `CAD_Calendario` contém os seguintes atributos principais:
+A solução é modularizada nos seguintes projetos:
 
-- **CAD_CD_Calendario**: Chave primária do calendário.
-- **CAD_Ano**: Ano associado ao calendário (opcional).
-- **CAD_Status**: Status do calendário, representado pelo enum `StatusCalendario`.
-- **CAD_DS_Observacao**: Observações gerais sobre o calendário (opcional).
-- **CAD_NumeroResolucao**: Número da resolução associada ao calendário (opcional, limitado a 50 caracteres).
-- **CAD_DT_DataAtualizacao**: Data e hora da última atualização do calendário.
-- **CAD_CD_Usuario**: Identificador do usuário responsável pela última atualização (opcional).
-- **CAD_CD_Evento**: Identificador de um evento associado ao calendário (opcional).
+- `CalendarioAcademico.Domain`: Entidades, enums e DTOs.
+- `CalendarioAcademico.Data`: Acesso a dados, repositórios e Unit of Work.
+- `CalendarioAcademico.WebAPI`: Controllers, validações, middleware e serviços.
+- Suporte opcional a Blazor WebAssembly para UI interativa.
 
-### Relacionamentos
+## 🗃️ Modelagem de Dados
 
-- **EVNT_Evento**: Relacionamento de **um-para-muitos** com a entidade `EVNT_Evento`. Um calendário pode conter múltiplos eventos.
+### Calendário (`CAD_Calendario`)
+- Ano único, status (Aguardando, Aprovado, Desativado), número da resolução.
+- Relacionamento 1:N com eventos.
 
-### Anotações de Dados
+### Evento (`EVNT_Evento`)
+- Datas de início/fim, descrição, tipo de feriado, flags como importante e ativo.
+- Relacionamento N:1 com calendário e 1:N com portarias.
 
-- `[Key]`: Define a chave primária.
-- `[Index]`: Cria um índice único na coluna `CAD_Ano`.
-- `[StringLength(50)]`: Limita o comprimento da string para 50 caracteres.
-- `[Unicode(false)]`: Define que a string não será armazenada como Unicode.
-- `[Column(TypeName = "datetime")]`: Especifica o tipo de dado no banco como `datetime`.
+### Portaria (`PORT_Portaria`)
+- Número e ano da portaria, status ativo, observações.
+- Associada a múltiplos eventos via tabela de junção.
 
-### Enumeração Associada
+### Evento-Portaria (`EVPT_Evento_Portaria`)
+- Associação entre eventos e portarias com data de vigência e status.
 
-A classe utiliza o enum `StatusCalendario` para representar o status do calendário. Os valores possíveis são:
+## 📚 Funcionalidades Principais
 
-- `Aguardando_Aprovacao` (0): Calendário aguardando aprovação.
-- `Aprovado` (1): Calendário aprovado.
-- `Desativado` (2): Calendário desativado.
+- 📌 Cadastro, edição e desativação de calendários acadêmicos
+- 📌 Consulta por ID, ano, status ou critérios dinâmicos
+- 📌 Gerenciamento completo de eventos e portarias
+- 📌 Filtros por período, mês, ano, status, tipo de feriado, etc.
+- 📌 Paginação, ordenação e filtros dinâmicos
+- 📌 Mapeamento entre objetos com Mapster
+- 📌 Validações específicas por tipo de dado (ex: `DateOnly`)
+- 📌 Middleware global para tratamento de exceções
+- 📌 Suporte a autenticação com Azure Active Directory
 
-## Relacionamentos com Outras Entidades
+## ⚙️ Regras de Negócio Implementadas
 
-### EVNT_Evento
+- Não permite calendários duplicados por ano
+- Status "Aprovado" bloqueia edição posterior
+- Desativação lógica de calendários, eventos e portarias
+- Relacionamentos consistentes entre entidades
+- Paginação eficiente para grandes volumes de dados
+- Validações dinâmicas (ex.: ano válido)
 
-- Um calendário pode conter múltiplos eventos (`EVNT_Evento`).
-- A propriedade `EVNT_Evento` é uma coleção que utiliza a anotação `[InverseProperty]` para mapear o relacionamento.
+## 🧪 Testes e Documentação
 
-### Outras Entidades Relacionadas
+A documentação da API está disponível via Swagger no próprio projeto (`/swagger`). É possível testar todos os endpoints diretamente pela interface interativa.
 
-A classe `EVNT_Evento` possui relacionamentos adicionais com a entidade `EVPT_Evento_Portaria`, que pode ser explorada para detalhar eventos específicos.
+---
 
-## Considerações Técnicas
+## 📂 Como Rodar o Projeto
 
-1. **Índice Único**: O índice único em `CAD_Ano` garante que não existam calendários duplicados para o mesmo ano.
-2. **Propriedades Opcionais**: Muitas propriedades são opcionais (nullable), o que oferece flexibilidade, mas pode exigir validações adicionais no código.
-3. **Relacionamentos**: O uso de coleções e chaves estrangeiras está bem estruturado, permitindo navegação eficiente entre entidades.
+```bash
+# Requisitos
+- .NET 8 SDK
+- SQL Server
+- Visual Studio 2022 ou VS Code com extensões C#
 
-## Sugestões de Melhoria
+# Clonar o repositório
+git clone https://github.com/Ishinaru/ProjetoCalendarioAcademico.git
 
-1. **Validação de Dados**: Implementar validações adicionais para garantir a consistência dos dados, como verificar se `CAD_Ano` é único antes de salvar.
-2. **Documentação**: Adicionar comentários XML para descrever as propriedades e seus usos.
-3. **Auditoria**: Considerar a implementação de um sistema de auditoria para rastrear alterações em `CAD_DT_DataAtualizacao` e `CAD_CD_Usuario`.
+# Restaurar pacotes
+dotnet restore
+
+# Aplicar migrações e rodar
+dotnet ef database update
+dotnet run --project CalendarioAcademico.WebAPI
