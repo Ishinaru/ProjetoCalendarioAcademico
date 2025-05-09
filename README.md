@@ -1,71 +1,75 @@
-# 📅 Calendário Acadêmico API
+![.NET](https://img.shields.io/badge/.NET-8.0-blue) ![C#](https://img.shields.io/badge/C%23-12.0-blue) ![License](https://img.shields.io/badge/License-MIT-green)
 
-API RESTful desenvolvida para automatizar e gerenciar o calendário acadêmico da Universidade, com suporte completo a cadastros, consultas, atualizações e desativações de calendários, eventos e portarias.
+# Calendário Acadêmico API
 
-## 🚀 Tecnologias Utilizadas
+## Descrição
+A **Calendário Acadêmico API** é uma RESTful API desenvolvida para automatizar o gerenciamento do calendário acadêmico, eventos e portarias da universidade, centralizando operações de cadastro, consulta, atualização e desativação.  
+> **Problema:** A Universidade carece de um sistema automatizado para o Calendário Acadêmico.  
+> **Solução:** API REST para integrar os sistemas SCP, oferecendo endpoints para calendários, eventos e portarias.
 
-- [.NET 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
-- C# 12
-- Entity Framework Core 8
-- ASP.NET Core Web API
-- Mapster (mapeamento de DTOs)
-- LinqKit (consultas dinâmicas)
-- Azure.Identity (autenticação)
-- Swagger / Swashbuckle (documentação interativa)
-- Microsoft.Data.SqlClient (conexão com SQL Server)
 
-## 🧩 Estrutura da Solução
+## Índice
+- [Funcionalidades](#funcionalidades)  
+- [Regras de Negócio](#regras-de-negócio)  
+- [Tech Stack](#tech-stack)  
+- [Estrutura do Projeto](#estrutura-do-projeto)  
+- [Instalação](#instalação)  
+- [Uso](#uso)  
+- [Contribuindo](#contribuindo)  
+- [Licença](#licença)  
 
-A solução é modularizada nos seguintes projetos:
+## Conjunto de Soluções
+- **.NET 8** & **C# 12**  
+- **Entity Framework Core 8**  
+- **Mapster** & **Mapster.EFCore**  
+- **LinqKit**  
+- **Azure.Identity**  
+- **ASP.NET Core Web API**  
+- **Swashbuckle / Swagger**  
+- **Razor Views** 
+- **Blazor** 
 
-- `CalendarioAcademico.Domain`: Entidades, enums e DTOs.
-- `CalendarioAcademico.Data`: Acesso a dados, repositórios e Unit of Work.
-- `CalendarioAcademico.WebAPI`: Controllers, validações, middleware e serviços.
-- Suporte opcional a Blazor WebAssembly para UI interativa.
+## Estrutura do Projeto
+```text
+CalendarioAcademico/
+├── CalendarioAcademico.Domain      # Modelos, DTOs, enums e validações
+├── CalendarioAcademico.Data        # DbContext, Repositórios, UnitOfWork, Migrações
+└── CalendarioAcademico.WebAPI      # Controllers, Services, Middleware, Program.cs
+```
 
-## 🗃️ Modelagem de Dados
+## Funcionalidades
+- **Calendários** (`CAD_Calendario`)  
+  - CRUD: criar, consultar (por ID, ano ou status), editar e desativar  
+- **Eventos** (`EVNT_Evento`)  
+  - CRUD: criar, consultar (por calendário, ano, mês ou período), editar e desativar  
+- **Portarias** (`PORT_Portaria`)  
+  - CRUD: criar, consultar, editar e desativar  
+- **Associações Evento ⇄ Portaria** (`EVPT_Evento_Portaria`)  
+  - Criar/editar/desativar vínculo entre eventos e portarias  
+- **Filtros & Paginação**  
+  - Listagens parametrizadas por status, datas, ordenação e páginas  
 
-### Calendário (`CAD_Calendario`)
-- Ano único, status (Aguardando, Aprovado, Desativado), número da resolução.
-- Relacionamento 1:N com eventos.
-
-### Evento (`EVNT_Evento`)
-- Datas de início/fim, descrição, tipo de feriado, flags como importante e ativo.
-- Relacionamento N:1 com calendário e 1:N com portarias.
-
-### Portaria (`PORT_Portaria`)
-- Número e ano da portaria, status ativo, observações.
-- Associada a múltiplos eventos via tabela de junção.
-
-### Evento-Portaria (`EVPT_Evento_Portaria`)
-- Associação entre eventos e portarias com data de vigência e status.
-
-## 📚 Funcionalidades Principais
-
-- 📌 Cadastro, edição e desativação de calendários acadêmicos
-- 📌 Consulta por ID, ano, status ou critérios dinâmicos
-- 📌 Gerenciamento completo de eventos e portarias
-- 📌 Filtros por período, mês, ano, status, tipo de feriado, etc.
-- 📌 Paginação, ordenação e filtros dinâmicos
-- 📌 Mapeamento entre objetos com Mapster
-- 📌 Validações específicas por tipo de dado (ex: `DateOnly`)
-- 📌 Middleware global para tratamento de exceções
-- 📌 Suporte a autenticação com Azure Active Directory
-
-## ⚙️ Regras de Negócio Implementadas
-
-- Não permite calendários duplicados por ano
-- Status "Aprovado" bloqueia edição posterior
-- Desativação lógica de calendários, eventos e portarias
-- Relacionamentos consistentes entre entidades
-- Paginação eficiente para grandes volumes de dados
-- Validações dinâmicas (ex.: ano válido)
-
-## 🧪 Testes e Documentação
-
-A documentação da API está disponível via Swagger no próprio projeto (`/swagger`). É possível testar todos os endpoints diretamente pela interface interativa.
-
----
+## Regras de Negócio
+1. **Calendário**  
+   - **Status**  
+     - 0 – Aguardando Aprovação: permite criar/editar eventos  
+     - 1 – Aprovado: não permite criar/editar eventos; permite associar portarias  
+     - 2 – Desativado: somente consulta histórica  
+   - **Transições**  
+     - `PATCH /api/calendario/{id}/aprovar` (Administrador)  
+     - `PATCH /api/calendario/{id}/desativar` (Administrador)  
+2. **Evento**  
+   - Só criado/editado quando o calendário está “Aguardando Aprovação”  
+   - Desativação somente se calendário não estiver desativado  
+3. **Portaria**  
+   - CRUD livre, mas só pode editar/desativar antes de vinculá‑la a evento aprovado   
+4. **Associação Evento–Portaria**  
+   - Só quando calendário estiver com status de “Aprovado”  
+   - Datas de vigência da portaria devem caber dentro do evento  
+5. **Auditoria**  
+   - Em todas as operações `Create/Update/Deactivate`, gravar usuário (`*_CD_Usuario`) e timestamp (`*_DT_DataAtualizacao = DateTime.Now`)  
+6. **Transações**  
+   - Criar/editar/desativar que envolvam múltiplas entidades devem usar `UnitOfWork.BeginTransactionAsync()` → `CommitAsync()` → `RollbackAsync()`  
 
 ## 📂 Como Rodar o Projeto
 
