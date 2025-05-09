@@ -9,14 +9,11 @@ A **Calendário Acadêmico API** é uma RESTful API desenvolvida para automatiza
 
 
 ## Índice
+- [Conjunto de Soluções](#conjunto-de-soluções)  
+- [Estrutura do Projeto](#estrutura-do-projeto)  
 - [Funcionalidades](#funcionalidades)  
 - [Regras de Negócio](#regras-de-negócio)  
-- [Tech Stack](#tech-stack)  
-- [Estrutura do Projeto](#estrutura-do-projeto)  
-- [Instalação](#instalação)  
-- [Uso](#uso)  
-- [Contribuindo](#contribuindo)  
-- [Licença](#licença)  
+- [Como Rodar o Projeto](#como-rodar-o-projeto)  
 
 ## Conjunto de Soluções
 - **.NET 8** & **C# 12**  
@@ -71,7 +68,7 @@ CalendarioAcademico/
 6. **Transações**  
    - Criar/editar/desativar que envolvam múltiplas entidades devem usar `UnitOfWork.BeginTransactionAsync()` → `CommitAsync()` → `RollbackAsync()`  
 
-## 📂 Como Rodar o Projeto
+## Como Rodar o Projeto
 
 ```bash
 # Requisitos
